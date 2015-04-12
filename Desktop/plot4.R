@@ -9,7 +9,7 @@ unlink(datFile)
 copyPowerDat <- powerDat ## copy of original data frame
 
 ## Clean Data (enough)
-powerDat <- powerDat[!powerDat == "?"]
+powerDat <- powerDat[!powerDat == "?", ]
 powerDat$Date <- as.Date(powerDat$Date, format = "%d/%m/%Y")
 
 
