@@ -11,7 +11,7 @@ unlink(datFile)
 copyPowerDat <- powerDat ## copy of original data frame
 
 ## Clean Data (enough)
- 
+powerDat <- powerDat[!powerDat == "?", ]
 powerDat$Date <- as.Date(powerDat$Date, format = "%d/%m/%Y")
 
 ##Subset
@@ -22,8 +22,7 @@ copysub <- powerDatsub
 powerDatsub$Global_active_power <- as.numeric(paste(powerDatsub$Global_active_power))
       ## make used data the right class (numeric)
 par(mar = c(4, 4, 4, 4)) ## set margins
-if(!file.exists("project1")) {dir.create("project1")}
-png(file="./project1/plot1.png", width=480, height=480) ## open png file
+png(file="plot1.png", width=480, height=480) ## open png file
 hist(powerDatsub$Global_active_power, xlab="Global Acitive Power (kilowatts)", 
 ylab="Frequency", col = "red", freq = TRUE, main = "Global Active Power") ## plot
 axis(2, at =c(400, 800, 1200)) ## annotate axis
